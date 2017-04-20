@@ -6,7 +6,7 @@ RUN echo "deb [arch=amd64] http://repo.powerdns.com/debian jessie-auth-40 main" 
 RUN echo "Package: pdns-*" >> /etc/apt/preferences.d/pdns
 RUN echo "Pin: origin repo.powerdns.com" >> /etc/apt/preferences.d/pdns
 RUN echo "Pin-Priority: 600" >> /etc/apt/preferences.d/pdns
-RUN curl https://repo.powerdns.com/FD380FBB-pub.asc | sudo apt-key add - &&
+RUN curl https://repo.powerdns.com/FD380FBB-pub.asc | apt-key add - &&
 
 
 RUN apt-get update
