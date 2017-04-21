@@ -20,3 +20,4 @@ EXPOSE 53000
 EXPOSE 8081
 
 ENTRYPOINT ['pdns_server']
+CMD ['--help']
