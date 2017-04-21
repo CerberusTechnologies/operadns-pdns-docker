@@ -16,6 +16,7 @@ RUN apt-get update
 RUN apt-get -y install pdns-server
 
 EXPOSE 53
+EXPOSE 53/udp
 EXPOSE 53000
 EXPOSE 8081
 
