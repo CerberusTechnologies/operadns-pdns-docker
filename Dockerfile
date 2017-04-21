@@ -19,5 +19,5 @@ EXPOSE 53
 EXPOSE 53000
 EXPOSE 8081
 
-ENTRYPOINT ['pdns_server']
-CMD ['--help']
+ENTRYPOINT ['/usr/sbin/pdns_server']
+CMD ['--daemon=no']
