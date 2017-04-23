@@ -22,7 +22,7 @@ RUN echo "gsqlite3-database=/data/powerdns.db" >> /etc/powerdns/pdns.conf
 RUN echo "gsqlite3-dnssec=yes" >> /etc/powerdns/pdns.conf
 
 COPY schema.sql /data
-RUN sqlite /data/powerdns.db < /data/schema.sql
+RUN sqlite3 /data/powerdns.db < /data/schema.sql
 
 EXPOSE 53
 EXPOSE 53/udp
