@@ -15,7 +15,7 @@ RUN wget https://repo.powerdns.com/CBC8B383-pub.asc && \
     rm CBC8B383-pub.asc
 
 RUN apt-get update
-RUN apt-get -y install pdns-server pdns-backend-sqlite3
+RUN apt-get -y install pdns-server pdns-backend-sqlite3 sqlite3
 
 RUN echo "launch=gsqlite3" >> /etc/powerdns/pdns.conf
 RUN echo "gsqlite3-database=/data/powerdns.db" >> /etc/powerdns/pdns.conf
