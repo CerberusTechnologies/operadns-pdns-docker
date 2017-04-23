@@ -13,7 +13,7 @@ RUN wget https://repo.powerdns.com/CBC8B383-pub.asc && \
     rm CBC8B383-pub.asc
 
 RUN apt-get update
-RUN apt-get -y install pdns-server pdns-backend-pgsql
+RUN apt-get -y install pdns-server pdns-backend-sqlite3
 
 EXPOSE 53
 EXPOSE 53/udp
