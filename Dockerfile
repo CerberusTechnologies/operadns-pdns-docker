@@ -1,6 +1,7 @@
 FROM debian:jessie
 MAINTAINER Derek Vance <dvance@cerb-tech.com>
 
+RUN mkdir /data
 VOLUME /data
 
 RUN apt-get update && apt-get -y install wget
