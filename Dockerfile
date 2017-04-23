@@ -26,6 +26,6 @@ RUN echo "launch=gsqlite3" >> /etc/powerdns/pdns.conf && \
 COPY schema.sql /data/
 RUN sqlite3 /data/powerdns.db < /data/schema.sql
 
-EXPOSE 53, 53/udp 53000 8081
+EXPOSE 53 53/udp 53000 8081
 
 ENTRYPOINT ["/usr/sbin/pdns_server", "--daemon=no"]
