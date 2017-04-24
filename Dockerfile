@@ -1,8 +1,7 @@
 FROM debian:jessie
 MAINTAINER Derek Vance <dvance@cerb-tech.com>
 
-RUN mkdir /data
-VOLUME /data
+VOLUME  /etc/powerdns/
 
 RUN apt-get update && apt-get -y install wget
 
@@ -20,11 +19,12 @@ RUN apt-get update && \
     apt-get -y install pdns-server pdns-backend-sqlite3 sqlite3
 
 RUN echo "launch=gsqlite3" >> /etc/powerdns/pdns.conf && \
-    echo "gsqlite3-database=/data/powerdns.db" >> /etc/powerdns/pdns.conf && \
+    echo "gsqlite3-database=/etc/powerdns/powerdns.sqlite3" >> /etc/powerdns/pdns.conf && \
     echo "gsqlite3-dnssec=yes" >> /etc/powerdns/pdns.conf
 
-COPY schema.sql /data/
-RUN sqlite3 /data/powerdns.db < /data/schema.sql
+COPY schema.sql /etc/powerdns/
+RUN sqlite3 /etc/powerdns/powerdns.sqlite3
+RUN sqlite3 /etc/powerdns/powerdns.sqlite3 < /etc/powerdns/schema.sql
 
 EXPOSE 53 53/udp 53000 8081
 
