@@ -1,8 +1,6 @@
 FROM debian:jessie
 MAINTAINER Derek Vance <dvance@cerb-tech.com>
 
-VOLUME  /etc/powerdns/
-
 RUN apt-get update && apt-get -y install wget
 
 RUN echo "deb [arch=amd64] http://repo.powerdns.com/debian jessie-auth-master main" > /etc/apt/sources.list.d/pdns.list
@@ -25,6 +23,8 @@ RUN echo "launch=gsqlite3" >> /etc/powerdns/pdns.conf && \
 COPY schema.sql /etc/powerdns/
 RUN sqlite3 /etc/powerdns/powerdns.sqlite3 && \
     sqlite3 /etc/powerdns/powerdns.sqlite3 < /etc/powerdns/schema.sql
+
+VOLUME  /etc/powerdns/
 
 EXPOSE 53 53/udp 53000 8081
 
