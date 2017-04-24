@@ -22,10 +22,10 @@ RUN echo "launch=gsqlite3" >> /etc/powerdns/pdns.conf && \
 
 COPY schema.sql /etc/powerdns/
 RUN if [-f /etc/powerdns/powerdns.sqlite3 ]; then \
-    echo "YOU MAY NEED TO UPDATE YOUR SQL DB, CHECK THE DOCS RELATED TO THIS VERSION." \
+    echo "YOU MAY NEED TO UPDATE YOUR SQL DB, CHECK THE DOCS RELATED TO THIS VERSION."; \
     else \
     sqlite3 /etc/powerdns/powerdns.sqlite3 ".databases" && \
-    sqlite3 /etc/powerdns/powerdns.sqlite3 < /etc/powerdns/schema.sql \
+    sqlite3 /etc/powerdns/powerdns.sqlite3 < /etc/powerdns/schema.sql; \
     fi
 
 VOLUME  /etc/powerdns/
