@@ -28,7 +28,6 @@ RUN if [-f /etc/powerdns/powerdns.sqlite3 ]; then \
     sqlite3 /etc/powerdns/powerdns.sqlite3 < /etc/powerdns/schema.sql; \
     fi
 
-VOLUME  /etc/powerdns/
 
 EXPOSE 53 53/udp 53000 8081
 
