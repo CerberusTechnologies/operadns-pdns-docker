@@ -27,4 +27,4 @@ RUN sqlite3 /etc/powerdns/powerdns.sqlite3 < /etc/powerdns/schema.sql
 
 EXPOSE 53 53/udp 53000 8081
 
-ENTRYPOINT ["/usr/sbin/pdns_server", "--daemon=no"]
+# ENTRYPOINT ["/usr/sbin/pdns_server", "--daemon=no"]
