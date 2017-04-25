@@ -21,12 +21,8 @@ RUN echo "launch=gsqlite3" >> /etc/powerdns/pdns.conf && \
     echo "gsqlite3-dnssec=yes" >> /etc/powerdns/pdns.conf
 
 COPY schema.sql /etc/powerdns/
-RUN if [-f /etc/powerdns/powerdns.sqlite3 ]; then \
-    echo "YOU MAY NEED TO UPDATE YOUR SQL DB, CHECK THE DOCS RELATED TO THIS VERSION."; \
-    else \
-    sqlite3 /etc/powerdns/powerdns.sqlite3 ".databases" && \
-    sqlite3 /etc/powerdns/powerdns.sqlite3 < /etc/powerdns/schema.sql; \
-    fi
+RUN sqlite3 /etc/powerdns/powerdns.sqlite3 ".databases" && \
+    sqlite3 /etc/powerdns/powerdns.sqlite3 < /etc/powerdns/schema.sql
 
 
 EXPOSE 53 53/udp 53000 8081
