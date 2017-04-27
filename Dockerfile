@@ -1,6 +1,8 @@
 FROM debian:jessie
 MAINTAINER Derek Vance <dvance@cerb-tech.com>
 
+VOLUME /etc/powerdns/
+
 RUN apt-get update && apt-get -y install wget
 
 RUN echo "deb [arch=amd64] http://repo.powerdns.com/debian jessie-auth-master main" > /etc/apt/sources.list.d/pdns.list
