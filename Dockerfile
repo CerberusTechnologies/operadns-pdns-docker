@@ -1,7 +1,6 @@
 FROM debian:jessie
 MAINTAINER Derek Vance <dvance@cerb-tech.com>
 
-VOLUME /etc/powerdns/
 
 RUN apt-get update && apt-get -y install wget
 
@@ -26,6 +25,8 @@ COPY schema.sql /etc/powerdns/
 RUN sqlite3 /etc/powerdns/powerdns.sqlite3 ".databases"
 RUN sqlite3 /etc/powerdns/powerdns.sqlite3 < /etc/powerdns/schema.sql
 
+
+VOLUME /etc/powerdns/
 
 EXPOSE 53 53/udp 53000 8081
 
