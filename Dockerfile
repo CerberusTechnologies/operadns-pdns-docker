@@ -27,6 +27,7 @@ RUN sqlite3 /etc/powerdns/powerdns.sqlite3 < /etc/powerdns/schema.sql
 
 
 VOLUME /etc/powerdns/
+WORKDIR /etc/powerdns/
 
 EXPOSE 53 53/udp 53000 8081
 
